@@ -1,27 +1,16 @@
 {
-  "main": "src/index.mjs",
+  "name": "yandex-afisha-parser",
+  "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
-    "vc-dev": "vc dev",
     "build": "node src/index.mjs",
-    "node-vc-env": "node -r dotenv/config src/index.mjs dotenv_config_path=.vercel/.env.development.local"
+    "start": "node src/index.mjs"
   },
   "dependencies": {
-    "@squoosh/lib": "^0.4.0",
-    "cartesian": "^1.0.1",
-    "csv-parse": "^5.3.3",
-    "csv-stringify": "^6.2.3",
-    "jsdom": "^20.0.3",
-    "node-fetch": "^3.3.0",
-    "p-limit": "^4.0.0",
-    "p-retry": "^5.1.2",
-    "p-wait-for": "^5.0.0",
-    "p-whilst": "^3.0.0"
-  },
-  "devDependencies": {
-    "dotenv": "^16.0.3"
-  },
-  "engines": {
-    "node": "^16.0.0"
+    "csv-stringify": "^6.4.0",
+    "node-fetch": "^3.3.2"
   }
 }

@@ -1,13 +1,11 @@
-import config from "../config.json" assert {type: "json"};
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
 
-const {output = './'} = config;
-const {MAX_EVENTS, API_KEYS, VERCEL, VERCEL_URL} = process.env;
-if (MAX_EVENTS) config.limit = parseInt(MAX_EVENTS);
-if (API_KEYS && config.api) config.api.keys = JSON.parse(API_KEYS);
-if (VERCEL && !config.timeout) config.timeout = 2500000;
-if (VERCEL_URL && !config.images?.url) {
-    if (!config.images) config.images = {};
-    config.images.url = new URL(config.images.path || './', `https://${VERCEL_URL}`).href;
-}
-config.output = new URL(output, new URL('../', import.meta.url));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const configPath = resolve(__dirname, '../config.json');
+const config = JSON.parse(readFileSync(configPath, 'utf8'));
+
 export default config;
